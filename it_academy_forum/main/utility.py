@@ -29,6 +29,7 @@ def get_login_data(request: HttpRequest):
 
 def get_register_data(request: HttpRequest):
     data = {}
+    data['username'] = request.POST.get('username', None)
     data['email'] = request.POST.get('email', None)
     data['password'] = request.POST.get('password', None)
     if not all(data.values()): raise InvalidData('Login')

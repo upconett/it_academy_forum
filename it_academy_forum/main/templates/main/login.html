@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login Here</h1>
-    <p>Login smth here</p>
-    <section class="login-box">
-        <form action="/login/" method="POST">
-            {% csrf_token %}
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            {% if fail %}
-            <h3>Failed</h3>
-            {% endif %}
-            <input type="submit" value="Login">
-        </form>
-    </section>
-</body>
-</html>
+{% extends 'main/auth.html' %}
+{% load static %}
+
+{%block title%}Login{%endblock%}
+
+{%block action%}/login/{%endblock%}
+
+{% block input_fields %}
+<img class="doodle1" src="{%static 'main/doodle2.png'%}" alt="doodle">
+<input type="email" class="cut1" name="email" placeholder="email" required="true">
+<input type="password" class="cut3" name="password" placeholder="password" required="true">
+{% endblock %}
+
+{% block submit_text %}Login{% endblock %}

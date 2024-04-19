@@ -1,0 +1,15 @@
+{% extends 'main/auth.html' %}
+{% load static %}
+
+{%block title%}Register{%endblock%}
+
+{%block action%}/register/{%endblock%}
+
+{% block input_fields %}
+<img class="doodle" src="{%static 'main/doodle1.png'%}" alt="doodle">
+<input type="text" class="cut1" name="username" maxlength="20" placeholder="username" required="true">
+<input type="email" class="cut2" name="email" placeholder="email" required="true">
+<input type="password" class="cut3" name="password" placeholder="password" required="true">
+{% endblock %}
+
+{% block submit_text %}Register{% endblock %}

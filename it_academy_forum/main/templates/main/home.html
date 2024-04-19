@@ -1,12 +1,44 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'main/home.css'%}">
+    <link rel="icon" href="{%static 'main/logo.png'%}">
     <title>Home</title>
 </head>
 <body>
-    <h1>This is a home page</h1>
-    <p>Some shit here</p>
+    <header>
+        <section class="logo">
+            <img src="{%static 'main/logo.png'%}" alt="logo">
+            <h1>sublimit</h1>
+        </section>
+        <nav>
+            <ul>
+                <li><a class="nav profile" href="#">profile</a></li>
+                <li><a class="nav home" href="#">home</a></li>
+                <li><a class="nav gallery" href="#">gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="left">
+            <div class="block">
+                <button>Oh this is button</button>
+                <input type="text" placeholder="And it's an input!">
+            </div>
+        </section>
+        <section class="content">
+            <div class="block">
+                <h2>Welcome to the Home page!</h2>
+                <img id="cat" src="{% static 'main/cat.png'%}" alt="cat">
+            </div>
+        </section>
+    </main>
+
+    <style>
+        
+    </style>
 </body>
 </html>

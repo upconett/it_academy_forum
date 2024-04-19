@@ -2,6 +2,7 @@ from django.http import *
 from django.shortcuts import render, redirect
 
 from .utility import *
+from django.db.utils import IntegrityError
 from user.models import User
 
 
@@ -26,12 +27,16 @@ def register(request: HttpRequest):
     elif request.method == 'POST':
         try:
             data = get_register_data(request)
-            user = User.objects.create()
+            user = User.objects.create(
+                username=data['username'],
+                email=data['email'],
+                password=data['password']
+                )
             response = HttpResponseRedirect('/home')
             set_user_cookies(user, response)
             return response
-        except InvalidData: return render(request, 'main/register.html', fail_1_dict(request))
-        except User.DoesNotExist: return redirect('/register?fail=1')
+        except InvalidData: return render(request, 'main/register.html', {'fail': 1, 'fail_message': 'Не все поля заполнены'})
+        except IntegrityError: return render(request, 'main/register.html', {'fail': 1, 'fail_message': 'Имя пользователя уже занято'})
     return Http404()
 
 
@@ -45,8 +50,8 @@ def login(request: HttpRequest):
             response = HttpResponseRedirect('/home')
             set_user_cookies(user, response)
             return response
-        except InvalidData: return redirect('/login?fail=1')
-        except User.DoesNotExist: return redirect('/login?fail=1')
+        except InvalidData: return render(request, 'main/login.html', {'fail': 1, 'fail_message': 'Не все поля заполнены'})
+        except User.DoesNotExist: return render(request, 'main/login.html', {'fail': 1, 'fail_message': 'Почта или пароль неверны'})
         
     return Http404()
 

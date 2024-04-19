@@ -1,0 +1,105 @@
+.container {
+    height: 80vh;
+    position: relative;
+}
+
+
+.auth-box {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 3px;
+    /* background-color: gray; */
+    transform: translate(-50%,-50%);
+
+    form {
+        font-size: 1.5em;
+        display: flex;
+        flex-direction: column;
+        gap: .4em;
+
+        h4 {
+            position: relative;
+            z-index: 2;
+            font-family: sans-serif;
+            font-size: .8em;
+            margin: 0;
+            text-align: center;
+            animation: popup .3s 1;
+        }
+
+        input {
+            position: relative;
+            appearance: none;
+            -webkit-appearance: none;
+            border: none;
+            z-index: 2;
+            border-radius: 5px;
+            padding: .3em .4em;
+            box-shadow: -.1em .1em .4em inset rgba(128, 128, 128, 0.597);
+            font-size: inherit;
+            transition: .2s;
+            outline: none;
+        }
+        .cut1 { 
+            animation: slide 1s 1;
+            width: 85%; 
+        }
+        .cut2 { 
+            position: relative;
+            left: 10%;
+            width: 83.5%;
+        }
+        .cut3 {
+            position: relative;
+            left: -5%;
+        }
+        input:focus {
+            box-shadow: 0 0 .2em inset rgba(128, 128, 128, 0.597);
+        }
+        .submit {
+            width: 75%;
+            margin: auto;
+            box-shadow: -.1em .1em .3em rgba(128, 128, 128, 0.597);
+        }
+        .submit:hover {
+            box-shadow: none;
+            scale: .99;
+            background-color: #e4f0e9;
+        }
+
+        input:hover {
+            box-shadow: -.1em .1em .5em inset rgba(128, 128, 128, 0.872);
+        }
+
+        .doodle {
+            position: absolute;
+            z-index: 0;
+            width: 3em;
+            left: 12em;
+            top: -4em;
+            rotate: -45deg;
+            scale: -1 1;
+        }
+
+        .doodle1 {
+            position: absolute;
+            z-index: 0;
+            width: 3em;
+            aspect-ratio: .6;
+            left: -1.5em;
+            bottom: -1.5em;
+            rotate: -90deg;
+        }
+    }
+}
+
+@keyframes popup {
+    0% {
+        font-size: 0;
+    }
+    100% {
+        font-size: .8em;
+    }
+}
